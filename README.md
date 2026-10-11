@@ -1,39 +1,39 @@
-# devenvs
+# dev
 
-Shared [devenv](https://devenv.sh) package sets and project templates.
+Shared [devenv](https://devenv.sh) environments and project templates.
 
-## Sets
+## Environments
 
-| Set | Provides |
+| Environment | Provides |
 |---|---|
-| `rust` | Rust toolchain, bacon, cargo-nextest, cargo-workspaces, watchexec |
-| `rust-gui` | Wayland, X11, Vulkan and OpenGL libraries on `LD_LIBRARY_PATH`, pkg-config |
-| `tauri` | cargo-tauri and the GTK and WebKitGTK build libraries |
-| `python-cuda` | Python with uv, NVIDIA driver libraries from `/run/opengl-driver` |
+| `envs/rust` | Rust toolchain, bacon, cargo-nextest, cargo-workspaces, watchexec |
+| `envs/rust-gui` | Wayland, X11, Vulkan and OpenGL libraries on `LD_LIBRARY_PATH`, pkg-config |
+| `envs/tauri` | cargo-tauri and the GTK and WebKitGTK build libraries |
+| `envs/python-cuda` | Python with uv, NVIDIA driver libraries from `/run/opengl-driver` |
 
-Import sets in a project's `devenv.yaml`:
+Import them in a project's `devenv.yaml`:
 
 ```yaml
 inputs:
-  devenvs:
-    url: github:hatimthayyil/devenvs
+  dev:
+    url: github:hatimthayyil/dev
     flake: false
 imports:
-  - devenvs/rust
-  - devenvs/rust-gui
+  - dev/envs/rust
+  - dev/envs/rust-gui
 ```
 
-To try local changes to a set, override the input: `devenv -o devenvs path:/hatimthayyil/code/devenvs shell`.
+To try local changes, override the input: `devenv -o dev path:/hatimthayyil/code/dev shell`.
 
 ## Templates
 
 ```sh
-nix flake init -t github:hatimthayyil/devenvs#<template>
+nix flake init -t github:hatimthayyil/dev#<template>
 ```
 
 | Template | Contents |
 |---|---|
-| `dioxus` | Dioxus web app, `rust` set, wasm32 target |
+| `dioxus` | Dioxus web app, `envs/rust`, wasm32 target |
 | `js-npm` | JavaScript with npm |
 | `python` | Python with uv |
 | `sagemath` | SageMath with uv and marimo |
@@ -42,4 +42,4 @@ The `dioxus` template pins `wasm-bindgen` in `Cargo.toml` to the version bundled
 
 ## Checks
 
-`devenv shell -- check` builds each set's shell in a scratch project.
+`devenv shell -- check` builds each environment's shell in a scratch project.

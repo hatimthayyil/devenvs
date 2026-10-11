@@ -1,5 +1,5 @@
 {
-  description = "Shared devenv package sets and project templates";
+  description = "Shared devenv environments and project templates";
 
   outputs = _: {
     templates = {
