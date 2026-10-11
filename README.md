@@ -23,7 +23,7 @@ imports:
   - dev/envs/rust-gui
 ```
 
-To try local changes, override the input: `devenv -o dev path:/hatimthayyil/code/dev shell`.
+To try local changes, override the input: `devenv -o dev path:<checkout> shell`.
 
 ## Templates
 
